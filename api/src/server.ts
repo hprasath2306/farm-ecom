@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import connectDatabase from './config/database';
 import authRoutes from './routes/auth.routes';
+import productRoutes from './routes/product.routes';
+import categoryRoutes from './routes/category.routes';
 import { errorHandler, notFound } from './middlewares/error.middleware';
 
 const app = express();
@@ -28,6 +30,8 @@ app.get("/", (req: Request, res: Response) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // 404 handler
 app.use(notFound);
